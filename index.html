@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>🌿 Smart Greenhouse</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="day"> <!-- default = day mode -->
+  <header class="topbar">
+    <h1>🌿 Smart Greenhouse</h1>
+    <div class="controls">
+      <button id="themeToggle">Dark</button>
+      <button id="autoToggle">Auto: ON</button>
+    </div>
+  </header>
+
+  <section class="status-row">
+    <div class="status">ESP: <span id="esp">--</span></div>
+    <div class="status">Updated: <span id="time">--</span></div>
+    <div class="status">Mode: <span id="mode">--</span></div>
+  </section>
+
+  <main class="grid">
+    <article class="card">
+      <h3>🌡 Temperature</h3>
+      <div id="temp" class="value">-- °C</div>
+    </article>
+
+    <article class="card">
+      <h3>💧 Humidity</h3>
+      <div id="hum" class="value">-- %</div>
+    </article>
+
+    <article class="card">
+      <h3>🌱 Soil Moisture</h3>
+      <div id="soil" class="value">--</div>
+    </article>
+
+    <article class="card">
+      <h3>☀ Light</h3>
+      <div id="light" class="value">--</div>
+    </article>
+
+    <article class="card">
+      <h3>🌫 Air Quality</h3>
+      <div id="air" class="value">--</div>
+    </article>
+
+    <article class="card">
+      <h3>⚙ Device Control</h3>
+      <div class="btn-row">
+        <button class="on" onclick="send('fan','ON')">Fan ON</button>
+        <button class="off" onclick="send('fan','OFF')">Fan OFF</button>
+      </div>
+      <div class="btn-row">
+        <button class="on" onclick="send('pump','ON')">Pump ON</button>
+        <button class="off" onclick="send('pump','OFF')">Pump OFF</button>
+      </div>
+      <div class="btn-row">
+        <button class="on" onclick="send('light','ON')">Light ON</button>
+        <button class="off" onclick="send('light','OFF')">Light OFF</button>
+      </div>
+      <div class="btn-row">
+        <button class="on" onclick="send('humid','ON')">Humid ON</button>
+        <button class="off" onclick="send('humid','OFF')">Humid OFF</button>
+      </div>
+    </article>
+
+    <article class="card camera-card">
+      <h3>📸 Plant Camera (ESP32-CAM)</h3>
+      <div class="cam-controls">
+        <button id="startStream">Start Stream</button>
+        <button id="stopStream" style="display:none">Stop Stream</button>
+        <button id="capture">Capture</button>
+        <button id="flashOn">Flash ON</button>
+        <button id="flashOff">Flash OFF</button>
+      </div>
+
+      <div class="cam-box">
+        <iframe id="camFrame" allowfullscreen style="display:none"></iframe>
+        <img id="captured" src="" alt="Captured" style="display:none"/>
+      </div>
+
+      <h3>🌿 Disease Detection Result</h3>
+      <div id="aiResult" class="value">--</div>
+      <div id="detectNote" style="margin-top:.6rem">Plant disease detection runs on server.</div>
+    </article>
+  </main>
+
+  <footer class="footer">Developed by Jeeva — Smart Greenhouse</footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
