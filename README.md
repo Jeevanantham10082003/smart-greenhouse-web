@@ -1,4 +1,4 @@
-Live Demo click here 
+Live Demo click here https://smart-greenhouse-web.vercel.app/
 # 🌿 Smart Greenhouse Monitoring & Control System  
 ### Using ESP8266, ESP32-CAM, Web Dashboard & Plant live Feed
 
@@ -67,7 +67,7 @@ ESP32-CAM
 - User can control devices from the dashboard
 
 ## 🚀 Deployment
-
+Live Demo click here https://smart-greenhouse-web.vercel.app/
 ### Frontend
 - Hosted on **Vercel**
 - Static files (HTML, CSS, JS)
