@@ -1,5 +1,5 @@
 // ================= CONFIG =================
-const BASE_URL = "http://10.209.43.222:3000";   // Node server (change if needed)
+const BASE_URL = "http://10.215.138.222:3000";   // Node server (change if needed)
 const CAM_IP   = "http://10.209.43.82";         // ESP32-CAM IP (change if needed)
 
 const $ = id => document.getElementById(id);
@@ -116,3 +116,4 @@ captureBtn.addEventListener('click', async () => {
 
 flashOnBtn.addEventListener('click', () => fetch(`${CAM_IP}/flash/on`));
 flashOffBtn.addEventListener('click', () => fetch(`${CAM_IP}/flash/off`));
+
