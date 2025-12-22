@@ -87,24 +87,23 @@ stopStreamBtn.addEventListener('click', () => {
 });
 
 captureBtn.addEventListener('click', async () => {
+  captureBtn.disabled = true;
+  aiResultEl.innerText = "📸 Capturing...";
+
   try {
     const r = await fetch(`${CAM_IP}/capture`);
     if (!r.ok) throw new Error("Capture failed");
 
     const blob = await r.blob();
-
-    // Show captured image
-    const url = URL.createObjectURL(blob);
-    capturedImg.src = url;
+    capturedImg.src = URL.createObjectURL(blob);
     capturedImg.style.display = 'block';
     camFrame.style.display = 'none';
 
-    // Notify dashboard
     aiResultEl.innerText = "📸 Image captured & saved to SD card";
-
   } catch (err) {
-    console.error(err);
     aiResultEl.innerText = "❌ Capture failed";
+  } finally {
+    captureBtn.disabled = false;
   }
 });
 
