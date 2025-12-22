@@ -44,9 +44,8 @@ async function loadData(){
     console.error("Fetch error:", err);
   }
 }
-setInterval(loadData, 800);   // 0.8s fast refresh
+setInterval(loadData, 400);   // 0.4s fast refresh
 loadData();
-
 function send(device, state){
   fetch(`${BASE_URL}/api/control?device=${device}&state=${state}`, { method: 'POST' })
     .then(()=> console.log(`${device} -> ${state}`))
@@ -90,31 +89,24 @@ stopStreamBtn.addEventListener('click', () => {
 captureBtn.addEventListener('click', async () => {
   try {
     const r = await fetch(`${CAM_IP}/capture`);
-    if (!r.ok) throw new Error('capture failed');
+    if (!r.ok) throw new Error("Capture failed");
+
     const blob = await r.blob();
 
-    // show image
+    // Show captured image
     const url = URL.createObjectURL(blob);
     capturedImg.src = url;
     capturedImg.style.display = 'block';
     camFrame.style.display = 'none';
 
-    // send to AI detection route
-    const aiResp = await fetch(`${BASE_URL}/detect`, { method: 'POST', body: blob });
-    if (aiResp.ok) {
-      const aiRes = await aiResp.json();
-      aiResultEl.innerText = `${aiRes.disease} (${(aiRes.confidence*100).toFixed(1)}%)`;
-    } else {
-      aiResultEl.innerText = 'AI Error';
-    }
+    // Notify dashboard
+    aiResultEl.innerText = "📸 Image captured & saved to SD card";
 
-  } catch(err) {
+  } catch (err) {
     console.error(err);
-    alert('Camera capture or AI failed');
+    aiResultEl.innerText = "❌ Capture failed";
   }
 });
 
 flashOnBtn.addEventListener('click', () => fetch(`${CAM_IP}/flash/on`));
 flashOffBtn.addEventListener('click', () => fetch(`${CAM_IP}/flash/off`));
-
-
