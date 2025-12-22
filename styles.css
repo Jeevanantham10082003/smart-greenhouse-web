@@ -33,13 +33,13 @@ body{
 
 /* DAY */
 body.day{
-  background: var(--bg) url('images/Day.png') center/cover no-repeat;
+  background: var(--bg) url('Day.png') center/cover no-repeat;
   color:var(--text);
 }
 
 /* DARK */
 body.dark{
-  background: #07140a url('images/Dark.png') center/cover no-repeat;
+  background: #07140a url('Dark.png') center/cover no-repeat;
   color:#dff7e6;
 }
 
@@ -238,5 +238,6 @@ body.dark{
   transition: none !important;
 }
 /* END OF FILE */
+
 
 
